@@ -1,0 +1,46 @@
+﻿<h1>
+    Menu
+</h1>
+
+@using EatZilla.Models.CoreClasses
+@model List<Dish>
+<table class="table table-bordered table-striped">
+    <thead>
+    <th>
+        Id
+    </th>
+    <th>
+        Item
+    </th>
+    <th>
+        Price
+    </th>
+    <th>
+        Oreders
+    </th>
+    </thead>
+    <tbody>
+        @foreach (var o in Model)
+        {
+            <tr>
+                <td>
+                    @o.DishId
+                </td>
+                <td>
+                    @o.Name
+                </td>
+                <td>
+                    @o.price
+                </td>
+
+
+
+
+            </tr>
+
+        }
+    </tbody>
+
+
+
+</table>

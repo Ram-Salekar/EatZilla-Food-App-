@@ -9,7 +9,7 @@ namespace EatZilla.Models.CoreClasses
         [Required]
         public string Name { get; set; }
 
-        public byte[] image { get; set; }
+       
         [Required]
         public int price {  get; set; }
         public Dish()
@@ -22,12 +22,6 @@ namespace EatZilla.Models.CoreClasses
             this.Name = name;
             this.price = price;
         }
-        public Dish(int DisId, string name, int price, byte[]img)
-        {
-            this.DishId = DisId;
-            this.Name = name;
-            this.price = price;
-            this.image = img;
-        }
+      
     }
 }

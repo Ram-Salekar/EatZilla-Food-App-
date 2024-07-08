@@ -3,6 +3,7 @@ using EatZilla.Models.DataConnection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EatZilla.Migrations
 {
     [DbContext(typeof(ApplicationDatabaseContext))]
-    partial class ApplicationDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240708082904_fromRam")]
+    partial class fromRam
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,44 +36,16 @@ namespace EatZilla.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<byte[]>("image")
+                        .IsRequired()
+                        .HasColumnType("longblob");
+
                     b.Property<int>("price")
                         .HasColumnType("int");
 
                     b.HasKey("DishId");
 
                     b.ToTable("dishes");
-
-                    b.HasData(
-                        new
-                        {
-                            DishId = 1,
-                            Name = "Biryani",
-                            price = 220
-                        },
-                        new
-                        {
-                            DishId = 2,
-                            Name = "Dal-Khichadi",
-                            price = 120
-                        },
-                        new
-                        {
-                            DishId = 3,
-                            Name = "Rice-plate",
-                            price = 150
-                        },
-                        new
-                        {
-                            DishId = 4,
-                            Name = "Chicken-Thali",
-                            price = 300
-                        },
-                        new
-                        {
-                            DishId = 5,
-                            Name = "Panner",
-                            price = 180
-                        });
                 });
 
             modelBuilder.Entity("EatZilla.Models.CoreClasses.Resturant", b =>
@@ -141,15 +116,9 @@ namespace EatZilla.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("longtext");
 

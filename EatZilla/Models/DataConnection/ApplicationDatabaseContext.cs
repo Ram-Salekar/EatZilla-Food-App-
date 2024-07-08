@@ -1,4 +1,5 @@
 ﻿ using EatZilla.Models.CoreClasses;
+
 using Microsoft.EntityFrameworkCore;
 namespace EatZilla.Models.DataConnection
 {
@@ -22,6 +23,15 @@ namespace EatZilla.Models.DataConnection
                 new Resturant { Rid = 103, Name = "Mataji", type = "Sweet" },
                 new Resturant { Rid = 104, Name = "Ashirwad", type = "NonVeg" }
             );
+            modelBuilder.Entity<Dish>().HasData(
+             new Dish { DishId = 1,Name = "Biryani",price=220},
+             new Dish { DishId = 2, Name = "Dal-Khichadi", price = 120 },
+             new Dish { DishId = 3, Name = "Rice-plate", price = 150 },
+             new Dish { DishId = 4, Name = "Chicken-Thali", price = 300 },
+             new Dish { DishId = 5, Name = "Panner", price = 180 }
+       
+
+           );
         }
 
 
