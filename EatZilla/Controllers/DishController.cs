@@ -8,11 +8,12 @@ namespace EatZilla.Controllers
 
 
     {
+        public static int dishid = 101;
         private readonly ApplicationDatabaseContext data;
 
         public DishController(ApplicationDatabaseContext db) {
-        
-        data = db;
+
+            data = db;
         }
 
 
@@ -21,5 +22,22 @@ namespace EatZilla.Controllers
             List<Dish> dish = data.dishes.ToList();
             return View(dish);
         }
+        public IActionResult Add()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Add(String dishname,String price)
+        {
+            int p = Convert.ToInt32(price);
+            Dish dish = new Dish(dishid++,dishname,p);
+
+            data.dishes.Add(dish);
+
+            return RedirectToAction("Index");
+
+
+        }
+        
     }
 }
