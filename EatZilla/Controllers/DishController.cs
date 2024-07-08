@@ -33,6 +33,7 @@ namespace EatZilla.Controllers
             Dish dish = new Dish(dishid++,dishname,p);
 
             data.dishes.Add(dish);
+            data.SaveChanges();
 
             return RedirectToAction("Index");
 
