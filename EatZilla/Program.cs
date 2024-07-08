@@ -1,7 +1,12 @@
+using EatZilla.Models.DataConnection;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+var a = builder.Configuration.GetConnectionString("sqlconnection");
+builder.Services.AddDbContext<ApplicationDatabaseContext>(o => o.UseMySql(a, ServerVersion.AutoDetect(a)));
 
 var app = builder.Build();
 
