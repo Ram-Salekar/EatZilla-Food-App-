@@ -4,26 +4,30 @@ namespace EatZilla.Models.CoreClasses
 {
     public class User
     {
+        public User()
+        {
+        }
+
         /* [Key]
-         public int Id { get; set; }
-         [Required]
-         public string Name { get; set; }
-         [Required]
-         public string Email { get; set; }
-         [Required]
-         public string Password { get; set; }
-         public User()
-         {
+public int Id { get; set; }
+[Required]
+public string Name { get; set; }
+[Required]
+public string Email { get; set; }
+[Required]
+public string Password { get; set; }
+public User()
+{
 
-         }
-         public User(int id,string name,string email,string password)
-         {
-             Id = id;
-             Name = name;
-             Email = email;
-             Password = password;
+}
+public User(int id,string name,string email,string password)
+{
+    Id = id;
+    Name = name;
+    Email = email;
+    Password = password;
 
-         }*/
+}*/
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Full name is required")]
@@ -43,5 +47,13 @@ namespace EatZilla.Models.CoreClasses
         [StringLength(100, MinimumLength = 6, ErrorMessage = "Password must be at least 6 characters long")]
         public string Password { get; set; }
 
+        public User(int id, string name, string email, string phone, string password)
+        {
+            Id = id;
+            Name = name;
+            Email = email;
+            Phone = phone;
+            Password = password;
+        }
     }
 }

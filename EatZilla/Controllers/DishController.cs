@@ -8,7 +8,7 @@ namespace EatZilla.Controllers
 
 
     {
-        public static int dishid = 101;
+        public static int dishid = 104;
         private readonly ApplicationDatabaseContext data;
 
         public DishController(ApplicationDatabaseContext db) {

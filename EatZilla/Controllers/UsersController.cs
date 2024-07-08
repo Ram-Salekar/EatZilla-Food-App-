@@ -7,12 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EatZilla.Models.CoreClasses;
 using EatZilla.Models.DataConnection;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 
 namespace EatZilla.Controllers
 {
     public class UsersController : Controller
     {
         private readonly ApplicationDatabaseContext _context;
+        public static int Uid = 11101; 
 
         public UsersController(ApplicationDatabaseContext context)
         {
@@ -53,17 +55,22 @@ namespace EatZilla.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Email,Phone,Password")] User user)
+       public IActionResult Create(String Name,String Email,String Phone,String Password)
+
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(user);
+            User u = new User(Uid++,Name,Email,Phone,Password);
+            _context.Add(u);
+            _context.SaveChanges();
+
+            return RedirectToAction("Sucess");
         }
+        public IActionResult Sucess()
+        {
+            return View();
+        }
+
+
+
 
         // GET: Users/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -152,6 +159,30 @@ namespace EatZilla.Controllers
         private bool UserExists(int id)
         {
             return _context.Users.Any(e => e.Id == id);
+        }
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login(String Email,String Password)
+        {
+            List<User> users = _context.Users.ToList();
+            foreach (User x in users)
+            {
+                if(x.Email.Equals(Email) && x.Password.Equals(Password)){
+
+                    return RedirectToAction("LoginSucess");
+                }
+
+
+            }
+
+            return View();
+        }
+        public IActionResult LoginSucess()
+        {
+            return View();
         }
     }
 }

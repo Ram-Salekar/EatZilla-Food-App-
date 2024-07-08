@@ -12,6 +12,7 @@ namespace EatZilla.Models.CoreClasses
        
         [Required]
         public int price {  get; set; }
+
         public Dish()
         {
             
