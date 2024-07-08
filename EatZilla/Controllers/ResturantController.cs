@@ -19,6 +19,7 @@ namespace EatZilla.Controllers
 
         {
             List<Resturant> list = data.resturants.ToList();
+            
             return View(list);
         }
     }

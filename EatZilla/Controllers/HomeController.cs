@@ -13,7 +13,12 @@ namespace EatZilla.Controllers
             _logger = logger;
         }
 
+
         public IActionResult Index()
+        {
+            return View();
+        }
+        public IActionResult OrderFood()
         {
             return View();
         }

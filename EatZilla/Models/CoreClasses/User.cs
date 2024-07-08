@@ -4,26 +4,44 @@ namespace EatZilla.Models.CoreClasses
 {
     public class User
     {
-        [Key]
+        /* [Key]
+         public int Id { get; set; }
+         [Required]
+         public string Name { get; set; }
+         [Required]
+         public string Email { get; set; }
+         [Required]
+         public string Password { get; set; }
+         public User()
+         {
+
+         }
+         public User(int id,string name,string email,string password)
+         {
+             Id = id;
+             Name = name;
+             Email = email;
+             Password = password;
+
+         }*/
         public int Id { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Full name is required")]
+        [StringLength(100, MinimumLength = 3, ErrorMessage = "Full name must be between 3 and 100 characters")]
         public string Name { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Email address is required")]
+        [EmailAddress(ErrorMessage = "Invalid email address")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Mobile number is required")]
+        [Phone(ErrorMessage = "Invalid phone number")]
+        
+        public string Phone { get; set; } = string.Empty;
+        
+        [Required(ErrorMessage = "Password is required")]
+        [DataType(DataType.Password)]
+        [StringLength(100, MinimumLength = 6, ErrorMessage = "Password must be at least 6 characters long")]
         public string Password { get; set; }
-        public User()
-        {
-            
-        }
-        public User(int id,string name,string email,string password)
-        {
-            Id = id;
-            Name = name;
-            Email = email;
-            Password = password;
-            
-        }
 
     }
 }

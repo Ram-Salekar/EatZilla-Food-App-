@@ -1,4 +1,4 @@
-﻿using EatZilla.Models.CoreClasses;
+﻿ using EatZilla.Models.CoreClasses;
 using Microsoft.EntityFrameworkCore;
 namespace EatZilla.Models.DataConnection
 {
