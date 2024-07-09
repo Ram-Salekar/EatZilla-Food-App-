@@ -171,14 +171,15 @@ namespace EatZilla.Controllers
             foreach (User x in users)
             {
                 if(x.Email.Equals(Email) && x.Password.Equals(Password)){
-
+                    Console.WriteLine("Hello World");
                     return RedirectToAction("LoginSucess");
                 }
-
+                
 
             }
+            return RedirectToAction("Create");
 
-            return View();
+           
         }
         public IActionResult LoginSucess()
         {
