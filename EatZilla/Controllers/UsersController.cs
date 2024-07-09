@@ -14,7 +14,7 @@ namespace EatZilla.Controllers
     public class UsersController : Controller
     {
         private readonly ApplicationDatabaseContext _context;
-        public static int Uid = 11101; 
+        public static int Uid = 1016; 
 
         public UsersController(ApplicationDatabaseContext context)
         {
